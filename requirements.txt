@@ -9,3 +9,4 @@ plotly
 openai
 Pillow
 torch
+torchvision

@@ -472,7 +472,7 @@ def main() -> None:
             "Paste Job Description",
             height=200,
             placeholder="e.g. We are hiring a Python Developer with 2-4 years...",
-            value=st.session_state.get("jd_text_input", st.session_state.get("jd_text", "")),
+            value=st.session_state.get("jd_text", ""),
             key="jd_text_input",
         )
         jd_file = st.file_uploader("Or upload JD file", type=["txt", "pdf"], key="jd_file_uploader")
@@ -480,12 +480,11 @@ def main() -> None:
         if jd_file is not None:
             jd_file_text = extract_text(jd_file.read(), jd_file.name)
             if jd_file_text:
-                jd_text_input = jd_file_text
-                st.session_state["jd_text_input"] = jd_file_text
                 st.session_state["jd_text"] = jd_file_text
+                st.rerun()
 
         if st.button("🔍 Extract JD Details"):
-            jd_text = st.session_state.get("jd_text_input", "").strip()
+            jd_text = jd_text_input.strip()
             if not jd_text:
                 st.warning("Please paste a job description first.")
             else:
@@ -656,7 +655,7 @@ def main() -> None:
                 use_container_width=True,
                 height=460,
                 column_config={
-                    "Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=100),
+                    "Score": st.column_config.NumberColumn("Score", format="%.1f"),
                     "Matched Skills": st.column_config.TextColumn("Matched Skills", width="large"),
                     "Missing Skills": st.column_config.TextColumn("Missing Skills", width="large"),
                 },
