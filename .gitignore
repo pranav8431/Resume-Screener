@@ -40,3 +40,33 @@ Thumbs.db
 
 # Streamlit
 .streamlit/
+
+# Node.js / npm / React
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+.parcel-cache/
+.next/
+out/
+
+# React / Vite
+.vite/
+.cache/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+.DS_Store
+.AppleDouble
+.LSOverride
