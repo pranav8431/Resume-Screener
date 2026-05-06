@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Analyzer Dashboard</title>
+    <meta name="description" content="Premium dark SaaS dashboard for JD validation, resume screening, and hiring decisions." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: '#0b0f17',
+              panel: '#111827',
+              panel2: '#0f172a',
+              line: '#1f2937'
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-bg text-slate-100 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 # AI Resume Screener
 
-Rule-based resume screening app for Indian hiring workflows, built with Python and Streamlit.
+Rule-based resume screening for Indian hiring workflows with a modern React + Tailwind SaaS dashboard (Streamlit app available as fallback).
 
 ## Overview
 This project screens resumes against a job description using deterministic extraction and scoring logic.
@@ -10,6 +10,7 @@ Core principles:
 - Rule-based parsing for JD and resume fields.
 - Repeatable scoring with transparent components.
 - Recruiter override support before analysis.
+- A separate premium SaaS-style frontend is available in `frontend/`.
 
 ## Key Features
 - Multi-format input support: PDF, DOCX, TXT.
@@ -18,8 +19,10 @@ Core principles:
 - Skill normalization via alias dictionary.
 - Weighted scoring and ranking.
 - Duplicate detection.
-- Candidate detail view with score breakdown and explanation.
+- Candidate detail view with explanation and matched/missing skills.
 - Excel export for full report and shortlist.
+- Modern React + Tailwind dashboard with black/light-blue theme, responsive ranking table, and detailed candidate view.
+- Reset All button to clear analysis and start fresh.
 
 ## JD Validation Flow (Tab 1)
 The app now uses a strict 3-step JD flow:
@@ -76,38 +79,53 @@ Recommendation bands:
 - exporter.py: Excel export
 - explainer.py: Rule-based explanations and message text
 - config.py: Constants, thresholds, and weights
+- frontend/: React + TypeScript + Tailwind dashboard frontend
 
 ## Setup
-Recommended: use a local virtual environment.
 
-1. Create and activate environment
+### Primary: React Dashboard 
+
+Navigate to the frontend directory:
+
+	npm install
+	npm run dev
+	//Go back to root folder
 
 Linux or macOS:
 
-	python -m venv .venv
-	source .venv/bin/activate
+	python -m venv venv
+	source venv/bin/activate
 
 Windows (PowerShell):
 
-	python -m venv .venv
-	.venv\Scripts\Activate.ps1
+	python -m venv venv
+	.\venv\Scripts\Activate.ps1
 
-2. Install dependencies
+After This:
 
 	pip install -r requirements.txt
-
-3. Run app
-
 	streamlit run app.py
 
+
 ## Usage
-1. Open Upload and Analyze tab.
-2. Paste or upload JD.
-3. Click Extract JD Details.
-4. Validate and confirm JD fields.
-5. Upload resumes.
-6. Click Analyze All Resumes.
-7. Review rankings, details, and exports in remaining tabs.
+
+### React Dashboard
+1. **Input JD**: Paste or upload a job description.
+2. **Extract & Review**: Click "Extract JD Details" to validate extracted fields.
+3. **Confirm JD**: Review the extracted fields in the validation panel and click "Confirm JD" to proceed.
+4. **Upload Resumes**: Click the upload area to add resume files (PDF or TXT format).
+5. **Analyze**: Click "Analyze All Resumes" to run skill matching and scoring.
+6. **View Results**: Review the ranking table, candidate details, and WhatsApp message template.
+7. **Reset**: Click the "Reset All" button to clear all fields and start a new analysis.
+
+### Streamlit App
+1. Navigate to the "Upload and Analyze" tab.
+2. Paste or upload a job description.
+3. Click "Extract JD Details".
+4. Validate and confirm JD fields in the left panel.
+5. Upload resume files.
+6. Click "Analyze All Resumes".
+7. Review rankings in the Ranking tab and detailed scores in the Details tab.
 
 ## Current Limitations
 - Regex parsing quality depends on document text quality.
